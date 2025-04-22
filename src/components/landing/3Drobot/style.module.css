@@ -6,9 +6,8 @@
 
 .robotContainer {
     position: relative;
-    width: 100vh;
+    width: 100vw;
     height: 100vh;
-    border:1px solid yellow
 }
 
 .robot {
@@ -33,13 +32,7 @@
 }
 
 @media (max-width:768px) {
-    .main {
-        right: -20%;
-        border: 1px solid red
-    }
-
     .robot {
-        scale: .5;
-        right: -20%;
+        scale: .7;
     }
 }

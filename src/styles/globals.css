@@ -9,7 +9,6 @@ body {
     padding: 0 2rem;
     position: relative;
     overflow: hidden;
-    border: 5px solid red;
 }
 
 * {
