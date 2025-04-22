@@ -1,0 +1,45 @@
+.main {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.robotContainer {
+    position: relative;
+    width: 100vh;
+    height: 100vh;
+    border:1px solid yellow
+}
+
+.robot {
+    scale: 1;
+}
+
+.hideLogo {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 200px;
+    height: 100px;
+    background: black;
+    z-Index: 10;
+}
+
+@media (max-width:1300px) {
+    .main {
+        top: -20%;
+        right: -15%;
+    }
+}
+
+@media (max-width:768px) {
+    .main {
+        right: -20%;
+        border: 1px solid red
+    }
+
+    .robot {
+        scale: .5;
+        right: -20%;
+    }
+}
