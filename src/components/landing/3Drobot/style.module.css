@@ -1,13 +1,14 @@
 .main {
     position: absolute;
     top: 0;
-    right: 0;
+    right: -20%;
+    height: 100vh;
 }
 
 .robotContainer {
     position: relative;
-    width: 100vw;
     height: 100vh;
+    width: 100vw;
 }
 
 .robot {
@@ -27,12 +28,15 @@
 @media (max-width:1300px) {
     .main {
         top: -20%;
-        right: -15%;
+        right: 0;
     }
 }
 
 @media (max-width:768px) {
+    .main{
+        right: 0;
+    }
     .robot {
-        scale: .7;
+        scale: 1;
     }
 }
