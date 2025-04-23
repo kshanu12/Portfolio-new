@@ -1,0 +1,66 @@
+.aboutSection{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    height: 100vh;
+}
+
+.selfImage{
+    height: 100vh;
+}
+
+.description{
+    color: #a7a7a7;
+    font-size: 1.5rem;
+    letter-spacing: 0.1rem;
+    line-height: 2.5rem;
+    margin: 10rem 5rem 0 0;
+    width: 50%;
+}
+
+.description p{
+    margin: 1rem 0 0 0;
+}
+
+.fourthPara {
+    display: none;
+}
+
+@media (max-width:1300px) {
+    .selfImage{
+        height: 50%;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%)
+    }
+
+    .description {
+        font-size: 1.25rem;
+        margin: 3rem 3rem;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width:768px) {
+    .description {
+        color: #a7a7a7;
+        font-size: 1rem;
+        letter-spacing: 0.1rem;
+        margin: 2rem;
+        line-height: 1.5rem;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .firstPara,
+    .secondPara,
+    .thirdPara {
+        display: none;
+    }
+
+    .fourthPara {
+        display: block;
+    }
+}

@@ -1,0 +1,26 @@
+import styles from './style.module.css'
+
+function AboutSection() {
+    return (
+        <div className={styles.aboutSection}>
+            <img src="self.png" className={styles.selfImage} />
+            <div className={styles.description}>
+                <h2>Hi there,</h2>
+                <p className={styles.firstPara}>
+                    I'm Shanu, a developer with a passion for code and a thirst for innovation and excellence. With a year and a half of experience under my belt, I've developed a strong foundation in full-stack development, showcasing skills that rival those of more seasoned professionals.
+                </p>
+                <p className={styles.secondPara}>
+                    My superpower lies in my debugging prowess—effortlessly identifying and resolving complex issues. I'm a competitive problem solver, always striving to optimize and improve my code.
+                </p>
+                <p className={styles.thirdPara}>
+                    I'm excited to collaborate with others and contribute to innovative projects that push the boundaries of technology. Let's connect and create something amazing together.
+                </p>
+                <p className={styles.fourthPara}>
+                    I'm Shanu, a passionate full-stack developer with 1.5 years of experience, known for strong debugging skills and a drive for innovation. I enjoy solving complex problems, continuously optimizing code, and collaborating on projects that push the boundaries of technology. Let's connect and build something amazing together.
+                </p>
+            </div>
+        </div>
+    )
+}
+
+export default AboutSection;
