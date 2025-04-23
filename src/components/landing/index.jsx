@@ -24,9 +24,36 @@ function Landing() {
         <div>
             <div className={styles.main}>
                 <div className={styles.content}>
-                    <h1 className={styles.name}>Hi, I'm KUMAR SHANU</h1>
-                    <div className={styles.shortDesc}>I'm a <span ref={el} /></div>
-                    <p className={styles.desc}>Shaping concepts into real projects that deliver results</p>
+                    <h1
+                        data-aos="fade-zoom-in"
+                        data-aos-easing="ease-in-back"
+                        data-aos-delay="300"
+                        data-aos-offset="0"
+                        data-aos-duration="1500"
+                        className={styles.name}
+                    >
+                        Hi, I'm KUMAR SHANU
+                    </h1>
+                    <div
+                        data-aos="fade-zoom-in"
+                        data-aos-easing="ease-in-back"
+                        data-aos-delay="300"
+                        data-aos-offset="0"
+                        data-aos-duration="3000"
+                        className={styles.shortDesc}
+                    >
+                        I'm a <span ref={el} />
+                    </div>
+                    <p
+                        data-aos="fade-zoom-in"
+                        data-aos-easing="ease-in-back"
+                        data-aos-delay="300"
+                        data-aos-offset="0"
+                        data-aos-duration="2000"
+                        className={styles.desc}
+                    >
+                        Shaping concepts into real projects that deliver results
+                    </p>
                 </div>
             </div>
             <Robot/>
