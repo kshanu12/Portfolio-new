@@ -1,3 +1,5 @@
+import ExperienceSection from "@/components/experience";
+
 export default function Experience() {
-    return <h1>Experience Page</h1>;
+    return <ExperienceSection/>
 }
