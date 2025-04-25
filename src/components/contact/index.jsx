@@ -32,7 +32,6 @@ const socialMedia = [
 ]
 
 function ContactSection() {
-    const { windowWidth } = useWindowWidth()
     const [formData, setFormData] = useState({
         name: '',
         email: '',

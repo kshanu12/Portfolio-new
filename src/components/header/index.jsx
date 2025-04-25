@@ -1,6 +1,7 @@
 import styles from './style.module.css';
 import { useState, useEffect, useRef } from 'react';
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const HEADER_ITEMS = [
     { name: "HOME", duration: 500, href: "/" },
@@ -13,7 +14,8 @@ const HEADER_ITEMS = [
 
 function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const menuWrapperRef = useRef(null); // Ref on wrapper around icon + menu
+    const menuWrapperRef = useRef(null);
+    const router = useRouter();
 
     const toggleMenu = () => {
         setIsMenuOpen(prev => !prev);
@@ -39,15 +41,14 @@ function Header() {
             {/* Desktop Navigation */}
             <nav className={styles.desktopNav}>
                 {HEADER_ITEMS.map((item) => (
-                    <Link
-                        href={item.href}
-                        data-aos="fade-down"
-                        data-aos-duration={item.duration}
-                        className={styles.anchor}
-                        key={item.name}
-                    >
-                        {item.name}
-                    </Link>
+                    <div key={item.name} data-aos="fade-down" data-aos-duration={item.duration}>
+                        <Link
+                            href={item.href}
+                            className={`${styles.anchor} ${router.pathname === item.href ? styles.active : ''}`}
+                        >
+                            {item.name}
+                        </Link>
+                    </div>
                 ))}
             </nav>
 
@@ -76,7 +77,7 @@ function Header() {
                     {HEADER_ITEMS.map((item) => (
                         <Link
                             href={item.href}
-                            className={styles.hamburgerAnchor}
+                            className={`${styles.hamburgerAnchor} ${router.pathname === item.href ? styles.activeMobile : ''}`}
                             key={item.name}
                             onClick={toggleMenu}
                         >
