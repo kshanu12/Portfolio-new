@@ -1,3 +1,5 @@
+import ContactSection from "@/components/contact";
+
 export default function Contact() {
-    return <h1>Contact Page</h1>;
+    return <ContactSection/>;
 }

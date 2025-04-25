@@ -104,6 +104,9 @@
     .header {
         padding: 1rem 0.5rem;
     }
+    .desktopNav {
+        gap: 1.5rem;
+    }
 }
 
 @media (max-width:768px) {

@@ -34,3 +34,27 @@ body {
   rotate: -30deg;
   z-index: -1;
 }
+
+.title {
+  margin: -10px 0 1rem 0;
+  font-size: 3rem;
+  color: #fff;
+}
+
+.subTitle {
+  color: #a7a7a7;
+  font-weight: 600;
+}
+
+@media (max-width:1300px) {}
+
+@media (max-width:768px) {
+  .title {
+    margin: -5px 0 1rem 0;
+    font-size: 2rem;
+  }
+
+  .subTitle {
+    font-size: 14px;
+  }
+}

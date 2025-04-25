@@ -30,8 +30,8 @@ function ExperienceSection() {
 
     return (
         <div className={styles.experienceSection}>
-            <p className={styles.subTitle}>WHAT I HAVE DONE SO FAR</p>
-            <h1 className={styles.title}>Work Experience.</h1>
+            <p className="subTitle">WHAT I HAVE DONE SO FAR</p>
+            <h1 className="title">Work Experience.</h1>
             <VerticalTimeline className={styles.verticalTimeline}>
                 {[...expDetails].reverse().map(detail => (
                     <VerticalTimelineElement
