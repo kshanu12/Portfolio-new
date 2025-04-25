@@ -1,21 +1,12 @@
-import { useState, useEffect } from 'react';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import { expDetails } from './expDetails';
 import styles from './style.module.css';
 import { icons } from '../Icons';
+import useWindowWidth from '@/hooks/useWindowWidth';
 
 function ExperienceSection() {
-    const [windowWidth, setWindowWidth] = useState(null);
-
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const updateWidth = () => setWindowWidth(window.innerWidth);
-            updateWidth(); 
-            window.addEventListener('resize', updateWidth);
-            return () => window.removeEventListener('resize', updateWidth);
-        }
-    }, []);
+    const { windowWidth } = useWindowWidth();
 
     const cardTitle = {
         fontSize: windowWidth !== null && windowWidth <= 768 ? '1.2rem' : '1.5rem',

@@ -1,9 +1,38 @@
+import useWindowWidth from '@/hooks/useWindowWidth';
 import { icons } from '../Icons';
 import styles from './style.module.css';
 import Link from "next/link";
 import { useState } from 'react';
 
+const socialMedia = [
+    {
+        id: 1,
+        name: "linkedin",
+        href: "https://www.linkedin.com/in/kumar-shanu-601810211/",
+        isVisible: true
+    },
+    {
+        id: 2,
+        name: "instagram",
+        href: "https://www.instagram.com/_k_shanu__",
+        isVisible: true
+    },
+    {
+        id: 3,
+        name: "twitter",
+        href: "https://www.x.com/kshanu123",
+        isVisible: false
+    },
+    {
+        id: 4,
+        name: "facebook",
+        href: "https://m.facebook.com/100007703867030",
+        isVisible: true
+    },
+]
+
 function ContactSection() {
+    const { windowWidth } = useWindowWidth()
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -29,7 +58,6 @@ function ContactSection() {
             <div className={styles.contactBody}>
                 <p className="subTitle">GET IN TOUCH</p>
                 <h1 className="title">Contact.</h1>
-
                 <form onSubmit={handleSubmit} className={styles.form}>
                     <div className={styles.inputSection}>
                         <label className={styles.inputTitle} htmlFor="name">Your Name</label>
@@ -72,35 +100,18 @@ function ContactSection() {
                     </div>
                     <button type="submit" className={styles.submitBtn}>Send</button>
                 </form>
+                <div className={styles.seperator}>. . .</div>
                 <div className={styles.socialMedia}>
-                    <Link
-                        target='_blank'
-                        href="https://www.linkedin.com/in/kumar-shanu-601810211/"
-                        className={styles.socialMediaIcon}
-                    >
-                        {icons["linkedin"]}
-                    </Link>
-                    <Link
-                        target='_blank'
-                        href="https://www.instagram.com/_k_shanu__"
-                        className={styles.socialMediaIcon}
-                    >
-                        {icons["instagram"]}
-                    </Link>
-                    <Link
-                        target='_blank'
-                        href="https://www.x.com/kshanu123"
-                        className={styles.socialMediaIcon}
-                    >
-                        {icons["twitter"]}
-                    </Link>
-                    <Link
-                        target='_blank'
-                        href="https://m.facebook.com/100007703867030"
-                        className={styles.socialMediaIcon}
-                    >
-                        {icons["facebook"]}
-                    </Link>
+                    {socialMedia.map(profile => {
+                        return (profile?.isVisible && <Link
+                            key={profile.id}
+                            target='_blank'
+                            href={profile.href}
+                            className={styles.socialMediaIcon}
+                        >
+                            {icons[profile.name]}
+                        </Link>)
+                    })}
                 </div>
             </div>
         </div>
