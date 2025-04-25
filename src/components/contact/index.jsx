@@ -91,7 +91,7 @@ function ContactSection() {
                             className={styles.input}
                             id="message"
                             name="message"
-                            rows="5"
+                            rows="8"
                             value={formData.message}
                             onChange={handleChange}
                             required
@@ -103,7 +103,8 @@ function ContactSection() {
                 <div className={styles.seperator}>. . .</div>
                 <div className={styles.socialMedia}>
                     {socialMedia.map(profile => {
-                        return (profile?.isVisible && <Link
+                        return (profile?.isVisible &&
+                        <Link
                             key={profile.id}
                             target='_blank'
                             href={profile.href}
