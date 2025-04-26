@@ -1,6 +1,6 @@
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
-import { expDetails } from './expDetails';
+import { expDetails } from '../../constants/expDetails';
 import styles from './style.module.css';
 import { icons } from '../Icons';
 import useWindowWidth from '@/hooks/useWindowWidth';

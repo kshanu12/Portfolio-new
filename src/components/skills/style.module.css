@@ -1,0 +1,189 @@
+/* ————————————————————–
+  Tree core styles
+*/
+.tree {
+    margin: 1em;
+    list-style-type: none;
+}
+
+.tree input {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+}
+
+.tree input~ul {
+    display: none;
+    transition: all 1s ease;
+}
+
+.tree input:checked~ul {
+    display: block;
+    max-height: 1000px;
+    opacity: 1;
+    transition: all 1s ease;
+}
+
+/* ————————————————————–
+  Tree rows
+*/
+.tree li {
+    line-height: 1.2;
+    position: relative;
+    padding: 0 0 1em 1em;
+    list-style-type: none;
+}
+
+.tree ul li {
+    padding: 1em 0 0 1em;
+}
+
+.tree>li:last-child {
+    padding-bottom: 0;
+}
+
+/* ————————————————————–
+  Tree labels
+*/
+.tree_label {
+    position: relative;
+    display: inline-block;
+    border-radius: 50px;
+    background: radial-gradient(#666, #000);
+}
+
+label.tree_label {
+    cursor: pointer;
+}
+
+label.tree_label:hover {
+    color: #666;
+}
+
+/* ————————————————————–
+  Tree expanded icon
+*/
+label.tree_label:before {
+    background: #000;
+    color: #fff;
+    position: relative;
+    z-index: 1;
+    float: left;
+    margin: 0 1em 0 -2em;
+    width: 1em;
+    height: 1em;
+    border-radius: 1em;
+    content: '+';
+    text-align: center;
+    line-height: .9em;
+    transition: transform 1s ease;
+}
+
+:checked~label.tree_label:before {
+    content: '–';
+    transform: rotate(90deg);
+    transition: transform 1s ease;
+}
+
+/* ————————————————————–
+  Tree branches
+*/
+.tree li:before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -.5em;
+    display: block;
+    width: 0;
+    border-left: 1px solid #777;
+    content: "";
+    transition: border-color 0.4s ease;
+}
+
+.tree input:checked~ul li:before {
+    border-left: 1px solid #333;
+    animation: branchFadeIn 1s ease;
+}
+
+.tree_label:after {
+    position: absolute;
+    top: 0;
+    left: -1.5em;
+    display: block;
+    height: 0.5em;
+    width: 1em;
+    border-bottom: 1px solid #777;
+    border-left: 1px solid #777;
+    border-radius: 0 0 0 .3em;
+    content: '';
+    transition: all 1s ease;
+}
+
+label.tree_label:after {
+    border-bottom: 0;
+}
+
+:checked~label.tree_label:after {
+    border-radius: 0 .3em 0 0;
+    border-top: 1px solid #333;
+    border-right: 1px solid #333;
+    border-bottom: 0;
+    border-left: 0;
+    bottom: 0;
+    top: 0.5em;
+    height: auto;
+    animation: connectorTransform 1s ease;
+}
+
+.tree li:last-child:before {
+    height: 1em;
+    bottom: auto;
+}
+
+.tree>li:last-child:before {
+    display: none;
+}
+
+.tree_custom {
+    display: block;
+    background: #eee;
+    padding: 1em;
+    border-radius: 0.3em;
+}
+
+/* Animations */
+@keyframes branchFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes connectorTransform {
+    0% {
+        transform: scaleX(0);
+    }
+
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+/* Animation for folder expansion */
+.tree input:checked~ul {
+    animation: expandFolder 1s ease forwards;
+}
+
+@keyframes expandFolder {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
