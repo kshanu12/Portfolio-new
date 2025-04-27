@@ -1,6 +1,5 @@
 .skillSection{
     border-radius: 20px;
-    margin-top: -1rem;
     padding: 1.5rem 2rem;
     background: radial-gradient(ellipse at top left, #1b1b1b9f, transparent 70%);
 }
@@ -9,6 +8,7 @@
     margin: 1em 0 0 2rem;
     list-style-type: none;
     padding: 0 0 0 1rem;
+    width: 40%;
 }
 
 .tree input {
@@ -122,10 +122,10 @@ label.tree_label:before {
 .tree_label:after {
     position: absolute;
     top: 0.5rem;
-    left: -3.5rem;
+    left: -57px;
     display: block;
     height: 0.5em;
-    width: 3em;
+    width: 3rem;
     border-bottom: 2px solid #333;
     border-left: 2px solid #333;
     border-radius: 0 0 0 .3em;
@@ -145,13 +145,13 @@ label.tree_label:after {
     border-bottom: 0;
     border-left: 0;
     bottom: 0;
-    top: 1em;
-    height: auto;
+    top: 1rem;
+    height: 20px;
     animation: connectorTransform 0.4s ease;
 }
 
 .tree li:last-child:before {
-    height: 1.5rem;
+    height: 25px;
     bottom: auto;
 }
 
