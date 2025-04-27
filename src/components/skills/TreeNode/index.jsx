@@ -14,7 +14,7 @@ function TreeNode({ node }) {
                     </ul>
                 </>
             ) : (
-                <span className={styles.tree_label}>{node.label}</span>
+                <span className={styles.tree_label} style={{fontSize:"12px"}}>{node.label}</span>
             )}
         </li>
     );

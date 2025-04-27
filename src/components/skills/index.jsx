@@ -4,7 +4,7 @@ import TreeNode from './TreeNode';
 
 const SkillSection = () => {
     return (
-        <div>
+        <div className={styles.skillSection}>
             <p className="subTitle">WHAT I BRING TO THE TABLE</p>
             <h1 className="title">Skills.</h1>
             <ul className={styles.tree}>
