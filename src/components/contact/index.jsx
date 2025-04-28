@@ -1,4 +1,3 @@
-import useWindowWidth from '@/hooks/useWindowWidth';
 import { icons } from '../Icons';
 import styles from './style.module.css';
 import Link from "next/link";

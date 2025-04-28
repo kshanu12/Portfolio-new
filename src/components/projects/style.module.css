@@ -1,0 +1,211 @@
+/* components/InfiniteCircularGallery.module.css */
+.container {
+    --n: 18;
+    /* Will be overridden by inline style */
+    --dir: 0;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    color: #dedede;
+    font: clamp(.625em, 3vmin, 1.5em)/1.25 var(--font-sans, sans-serif);
+    display: grid;
+    grid-template-rows: max-content 1fr max-content;
+}
+
+.container::before {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: #000;
+    filter: url(#grain);
+    content: '';
+}
+
+@media (max-aspect-ratio: 2/3) {
+    .container {
+        --dir: 1;
+    }
+}
+
+.header {
+    display: grid;
+    place-content: center;
+    place-items: center;
+    padding: .5em;
+    text-align: center;
+    grid-area: 1/1;
+    z-index: 5;
+}
+
+.header em {
+    max-width: 32em;
+}
+
+.scene {
+    overflow: hidden;
+    perspective: 50em;
+    display: grid;
+}
+
+.assembly {
+    --r: calc(2 + var(--dir))/3;
+    --w: clamp(4em, min(50vh, 25vw), 18em);
+    --z: calc(var(--f, 1.25)*-.5*var(--w)/tan(.5turn/var(--n)));
+    place-self: center;
+    translate: 0 0 var(--z);
+    rotate: var(--dir) calc(1 - var(--dir)) 0 calc((var(--k, 0) + .5)*-1turn);
+    display: grid;
+    transform-style: preserve-3d;
+    transition: rotate 0.1s ease;
+}
+
+.article {
+    --j: var(--i)/var(--n);
+    --dif-lin: calc(var(--j) - var(--k, 0));
+    --abs-lin: max(var(--dif-lin), calc(-1 * var(--dif-lin)));
+    --dif-mid: calc(.5 - var(--abs-lin));
+    --abs-mid: max(var(--dif-mid), calc(-1 * var(--dif-mid)));
+    --dif-arc: calc(2*(.5 - var(--abs-mid)));
+    --lim: .35;
+    --sel: max(0, calc((var(--lim) - var(--dif-arc))/var(--lim)));
+    --out: calc(1 - var(--sel));
+    --hov: 0;
+    width: var(--w);
+    aspect-ratio: var(--r);
+    transform:
+        rotate3d(var(--dir), calc(1 - var(--dir)), 0, calc(var(--j)*1turn)) translateZ(var(--z)) rotate(calc(var(--dir)*.5turn));
+    display: grid;
+    grid-area: 1/1;
+    transform-style: preserve-3d;
+}
+
+.itemHeader {
+    display: grid;
+    rotate: y calc(var(--hov)*.5turn);
+    grid-area: 1/1;
+    place-content: center;
+    place-items: center;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.itemHeader h2{
+    font-size: 2rem !important;
+}
+
+.itemHeader p{
+    font-size: 1rem;
+    text-align: center;
+}
+
+.article:hover,
+.article:focus-within {
+    --hov: 1;
+}
+
+.itemHeader,
+.figure {
+    --ang: calc(-45deg + var(--hov)*180deg);
+    overflow: hidden;
+    position: relative;
+    border: solid 4px transparent;
+    border-radius: .5em;
+    backface-visibility: hidden;
+    box-shadow: 5px 5px 13px #000;
+    background:
+        var(--url) 50%/cover padding-box,
+        linear-gradient(#333 0 0) padding-box,
+        repeating-conic-gradient(from var(--ang),
+            transparent 0% 15%,
+            rgba(244, 140, 6, calc(var(--sel)*100%)) 20% 30%,
+            transparent 35% 50%) border-box #121212;
+    background-blend-mode: multiply, normal, normal;
+    isolation: isolate;
+    transition: .35s ease-out;
+    transition-property: rotate, --ang;
+}
+
+.itemHeader::after,
+.figure::after {
+    position: absolute;
+    inset: 0;
+    opacity: var(--out);
+    background: #03071e;
+    mix-blend-mode: color;
+    content: '';
+}
+
+.itemHeader h2,
+.itemHeader em {
+    opacity: var(--sel);
+}
+
+.itemHeader h2 {
+    font-size: 1.125em;
+}
+
+.figure {
+    rotate: y calc((1 + var(--hov))*.5turn);
+    grid-area: 1/1;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: var(--r);
+    object-fit: cover;
+    object-position: var(--pos);
+    grid-area: 1/1;
+}
+
+.figcaption {
+    align-self: end;
+    padding: .5em;
+    background: rgba(255, 255, 255, 0.2);
+    color: #040404;
+    font-size: max(.75rem, .75em);
+    text-align: right;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px) brightness(1.5);
+    grid-area: 1/1;
+}
+
+.figcaption a {
+    color: #370617;
+}
+
+.aside {
+    position: fixed;
+    bottom: 0;
+    padding: .5em;
+    z-index: 5;
+}
+
+.boxInfoScrollani {
+    margin: .5em;
+    border-left: solid 5px #dc3055;
+    padding: .75em;
+    box-shadow: 2px 2px 5px hsla(0, 0%, 0%, .35);
+    background: #851d40;
+    color: #fff;
+    font: 1em/1.25 var(--font-sans, sans-serif);
+}
+
+.footer {
+    z-index: 5;
+}
+
+.icon {
+    margin:1rem 0 0 0;
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 10;
+    margin: 0 5px;
+    opacity: var(--sel);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.icon:hover {
+    transform: scale(1.2);
+}
