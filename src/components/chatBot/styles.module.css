@@ -76,18 +76,48 @@
 
 .message {
     display: flex;
-    align-items:flex-start;
-    font-size: 0.9rem;
     margin-bottom: 0.75rem;
     line-height: 1.4;
+    gap: 0.5rem;
+    align-items: flex-end;
 }
 
 .user {
-    color: #fff;
+    justify-content: flex-end;
 }
 
 .bot {
-    color: #047857;
+    justify-content: flex-start;
+}
+
+.messageText {
+    max-width: 70%;
+    padding: 0.5rem 0.75rem;
+    border-radius: 16px;
+    font-size: 0.85rem;
+    word-break: break-word;
+    line-height: 1.3;
+}
+
+.user .messageText {
+    background-color: #2563eb;
+    color: white;
+    border-bottom-right-radius: 0;
+}
+
+.bot .messageText {
+    background-color: #047857;
+    color: white;
+    border-bottom-left-radius: 0;
+}
+
+.botIcon {
+    flex-shrink: 0;
+}
+
+.userIcon{
+    flex-shrink: 0;
+    margin-bottom:-5px;
 }
 
 .inputArea {

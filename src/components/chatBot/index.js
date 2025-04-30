@@ -82,17 +82,17 @@ export default function ChatWidget() {
                   msg.sender === "user" ? styles.user : styles.bot
                 }`}
               >
-                  {msg.sender === "user" ? (
-                    <div className={styles.userIcon}>{icons["userProfile"]} </div>
-                  ) : (
-                    <img
-                      src="bot-head.png"
-                      style={{ height: "1rem", marginTop: "5px" }}
-                    />
-                  )}
-                <div className="messageText">
-                &nbsp; : {msg.text}
-                </div>
+                {msg.sender === "bot" && (
+                  <img
+                    src="bot-head.png"
+                    className={styles.botIcon}
+                    style={{ height: "1.2rem"}}
+                  />
+                )}
+                <div className={styles.messageText}>{msg.text}</div>
+                {msg.sender === "user" && (
+                  <div className={styles.userIcon}>{icons["userProfile"]}</div>
+                )}
               </div>
             ))}
           </div>
