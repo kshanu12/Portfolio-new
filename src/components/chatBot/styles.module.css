@@ -6,72 +6,116 @@
 }
 
 .bubble {
-    background-color: #2563eb;
-    /* Tailwind's blue-600 */
-    color: white;
+    position: absolute;
+    bottom: -250px;
+    right: -370px;
+    background: none;
+    scale: 0.2;
     border: none;
-    border-radius: 50%;
-    width: 3.5rem;
-    height: 3.5rem;
-    font-size: 1.5rem;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .chatWindow {
+    position: absolute;
+    bottom: 0;
+    right: 0;
     width: 300px;
     height: 400px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    margin-bottom: 1rem;
+    background: radial-gradient(circle, #222, #111);
+    border: 1px solid rgba(255, 255, 255, 0.192);
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.096);
+}
+
+.header {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.5rem;
+    box-shadow: inset 0 0 20px #000000b9;
+}
+
+.botName{
+    height:1.5rem;
+}
+
+.closeIcon {
+    cursor: pointer;
 }
 
 .messages {
     flex: 1;
     overflow-y: auto;
-    padding: 1rem;
+    padding: 0.5rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.messages::-webkit-scrollbar {
+    width: 2px;
+}
+
+.messages::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.messages::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.messages::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.4);
 }
 
 .message {
+    display: flex;
+    align-items:flex-start;
     font-size: 0.9rem;
     margin-bottom: 0.75rem;
     line-height: 1.4;
 }
 
 .user {
-    color: #1d4ed8;
-    /* Tailwind's blue-700 */
+    color: #fff;
 }
 
 .bot {
     color: #047857;
-    /* Tailwind's green-700 */
 }
 
 .inputArea {
     display: flex;
-    border-top: 1px solid #e5e7eb;
+    gap: 0.5rem;
+    border-top: 1px solid #383838;
     padding: 0.5rem;
+    box-shadow: inset 0 0 10px #000;
 }
 
 .inputArea input {
-    flex: 1;
-    padding: 0.5rem;
-    font-size: 0.9rem;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    margin-right: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    width: 100%;
+    background: #ffffff10;
+    color: #a7a7a7;
 }
 
 .inputArea button {
-    background-color: #2563eb;
+    background-color: transparent;
     color: white;
-    border: none;
-    padding: 0 1rem;
-    border-radius: 6px;
+    border: 1px solid #383838;
+    border-radius: 50px;
     cursor: pointer;
+    width: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

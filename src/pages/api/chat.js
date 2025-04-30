@@ -10,21 +10,7 @@ export default async function handler(req, res) {
 
   const { message } = req.body;
 
-  const fullContext = `
-    You are a chatbot assistant for a personal portfolio. Only answer using the data below.
-    If the user asks anything unrelated, just say NO.
-
-    EXPERIENCE:
-    ${formatExperience()}
-
-    User: ${message}`;
-
   try {
-
-    // const response = await ai.models.generateContent({
-    //   model: "gemini-2.0-flash",
-    //   contents: fullContext,
-    // });
 
     const response = await ai.models.generateContent({
       model: "gemini-2.0-flash",
