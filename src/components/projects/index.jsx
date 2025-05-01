@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import styles from './style.module.css';
 import Link from "next/link";
 import { icons } from '../Icons';
+import { projects } from '@/constants/projectDetails';
 
 const InfiniteCircularGallery = ({ items }) => {
     const [mounted, setMounted] = useState(false);
@@ -245,94 +246,6 @@ export default function ProjectSection() {
     const [galleryItems, setGalleryItems] = useState([]);
 
     useEffect(() => {
-        // Animal data for the gallery
-        const projects = [
-            {
-                name: 'Dribbling Blocks',
-                description: 'This is a Dribbling Blocks game inspired by the offline dinosaur game. You control a small block that jumps and dodges increasingly faster obstacles to survive as long as possible.',
-                imageSrc: '/dribbling-blocks.png',
-                githubUrl: 'https://github.com/kshanu12/Dribbling-block',
-                liveUrl: 'https://kshanu12.github.io/Dribbling-block/',
-            },
-            {
-                name: 'Dribbling Blocks',
-                description: 'This is a Dribbling Blocks game inspired by the offline dinosaur game. You control a small block that jumps and dodges increasingly faster obstacles to survive as long as possible.',
-                imageSrc: '/dribbling-blocks.png',
-                githubUrl: 'https://github.com/kshanu12/Dribbling-block',
-                liveUrl: 'https://kshanu12.github.io/Dribbling-block/',
-            },
-            {
-                name: 'Dribbling Blocks',
-                description: 'This is a Dribbling Blocks game inspired by the offline dinosaur game. You control a small block that jumps and dodges increasingly faster obstacles to survive as long as possible.',
-                imageSrc: '/dribbling-blocks.png',
-                githubUrl: 'https://github.com/kshanu12/Dribbling-block',
-                liveUrl: 'https://kshanu12.github.io/Dribbling-block/',
-            },
-            {
-                name: 'Dribbling Blocks',
-                description: 'This is a Dribbling Blocks game inspired by the offline dinosaur game. You control a small block that jumps and dodges increasingly faster obstacles to survive as long as possible.',
-                imageSrc: '/dribbling-blocks.png',
-                githubUrl: 'https://github.com/kshanu12/Dribbling-block',
-                liveUrl: 'https://kshanu12.github.io/Dribbling-block/',
-            },
-            {
-                name: 'Dribbling Blocks',
-                description: 'This is a Dribbling Blocks game inspired by the offline dinosaur game. You control a small block that jumps and dodges increasingly faster obstacles to survive as long as possible.',
-                imageSrc: '/dribbling-blocks.png',
-                githubUrl: 'https://github.com/kshanu12/Dribbling-block',
-                liveUrl: 'https://kshanu12.github.io/Dribbling-block/',
-            },
-            {
-                name: 'Dribbling Blocks',
-                description: 'This is a Dribbling Blocks game inspired by the offline dinosaur game. You control a small block that jumps and dodges increasingly faster obstacles to survive as long as possible.',
-                imageSrc: '/dribbling-blocks.png',
-                githubUrl: 'https://github.com/kshanu12/Dribbling-block',
-                liveUrl: 'https://kshanu12.github.io/Dribbling-block/',
-            },
-            {
-                name: 'Dribbling Blocks',
-                description: 'This is a Dribbling Blocks game inspired by the offline dinosaur game. You control a small block that jumps and dodges increasingly faster obstacles to survive as long as possible.',
-                imageSrc: '/dribbling-blocks.png',
-                githubUrl: 'https://github.com/kshanu12/Dribbling-block',
-                liveUrl: 'https://kshanu12.github.io/Dribbling-block/',
-            },
-            {
-                name: 'Dribbling Blocks',
-                description: 'This is a Dribbling Blocks game inspired by the offline dinosaur game. You control a small block that jumps and dodges increasingly faster obstacles to survive as long as possible.',
-                imageSrc: '/dribbling-blocks.png',
-                githubUrl: 'https://github.com/kshanu12/Dribbling-block',
-                liveUrl: 'https://kshanu12.github.io/Dribbling-block/',
-            },
-            {
-                name: 'Dribbling Blocks',
-                description: 'This is a Dribbling Blocks game inspired by the offline dinosaur game. You control a small block that jumps and dodges increasingly faster obstacles to survive as long as possible.',
-                imageSrc: '/dribbling-blocks.png',
-                githubUrl: 'https://github.com/kshanu12/Dribbling-block',
-                liveUrl: 'https://kshanu12.github.io/Dribbling-block/',
-            },
-            {
-                name: 'Dribbling Blocks',
-                description: 'This is a Dribbling Blocks game inspired by the offline dinosaur game. You control a small block that jumps and dodges increasingly faster obstacles to survive as long as possible.',
-                imageSrc: '/dribbling-blocks.png',
-                githubUrl: 'https://github.com/kshanu12/Dribbling-block',
-                liveUrl: 'https://kshanu12.github.io/Dribbling-block/',
-            },
-            {
-                name: 'Dribbling Blocks',
-                description: 'This is a Dribbling Blocks game inspired by the offline dinosaur game. You control a small block that jumps and dodges increasingly faster obstacles to survive as long as possible.',
-                imageSrc: '/dribbling-blocks.png',
-                githubUrl: 'https://github.com/kshanu12/Dribbling-block',
-                liveUrl: 'https://kshanu12.github.io/Dribbling-block/',
-            },
-            {
-                name: 'Dribbling Blocks',
-                description: 'This is a Dribbling Blocks game inspired by the offline dinosaur game. You control a small block that jumps and dodges increasingly faster obstacles to survive as long as possible.',
-                imageSrc: '/dribbling-blocks.png',
-                githubUrl: 'https://github.com/kshanu12/Dribbling-block',
-                liveUrl: 'https://kshanu12.github.io/Dribbling-block/',
-            }
-        ];
-
         setGalleryItems(projects);
     }, []);
 

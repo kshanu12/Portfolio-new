@@ -1,4 +1,3 @@
-// school -> work
 export const expDetails = [
   {
     id: 1,

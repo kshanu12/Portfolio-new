@@ -75,6 +75,21 @@ export default function ChatWidget() {
             <div className={styles.closeIcon}>{icons["close"]}</div>
           </div>
           <div className={styles.messages}>
+            <div className={`${styles.message} ${styles.bot}`}>
+              <img
+                src="bot-head.png"
+                className={styles.botIcon}
+                style={{ height: "1.2rem" }}
+              />
+              <div className={styles.messageText}>
+                Hi there! 👋 I'm Shanu's virtual assistant. Feel free to ask me
+                about his work experience, education, projects, skills, or
+                anything else related to his professional background. How can I
+                help you today?
+                {/* Hi! I'm Shanu's virtual assistant. How can I
+                help you learn more about his professional background today? */}
+              </div>
+            </div>
             {messages.map((msg, idx) => (
               <div
                 key={idx}
