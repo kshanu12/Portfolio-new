@@ -17,6 +17,7 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-icon-cloud": "^4.1.7",
+    "react-markdown": "^10.1.0",
     "react-vertical-timeline-component": "^3.5.3",
     "typed.js": "^2.1.0"
   },

@@ -2,8 +2,11 @@ import styles from './style.module.css';
 import { skills } from '@/constants/skills';
 import TreeNode from './TreeNode';
 import DynamicIconCloud from './skillIconCloud';
+import useWindowWidth from '@/hooks/useWindowWidth';
 
 const SkillSection = () => {
+    const { windowWidth } = useWindowWidth();
+
     return (
         <div className={styles.skillSection}>
             <p className="subTitle">WHAT I BRING TO THE TABLE</p>
@@ -14,7 +17,10 @@ const SkillSection = () => {
                         <TreeNode key={node.id} node={node} />
                     ))}
                 </ul>
-                <DynamicIconCloud />
+                {
+                    windowWidth > 768 &&
+                    <DynamicIconCloud />
+                }
             </div>
         </div>
     );

@@ -99,6 +99,11 @@
     line-height: 1.3;
 }
 
+.messageText li {
+    margin-bottom: 0.5rem;
+    list-style-position:inside
+}
+
 .user .messageText {
     background-color: #2563eb;
     color: white;

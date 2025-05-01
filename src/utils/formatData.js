@@ -2,6 +2,7 @@ import { aboutDetails } from "@/constants/about";
 import { expDetails } from "@/constants/expDetails";
 import { projects } from "@/constants/projectDetails";
 import { skills } from "@/constants/skills";
+import { socialMedia } from "@/constants/socialMedia";
 
 export function formatExperience() {
   const school = expDetails.filter((e) => e.type === "school");
@@ -50,4 +51,15 @@ export function formatSkills() {
       .join("\n");
   }
   return recurse(skills);
+}
+
+function capitalize(word) {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+}
+
+export function formatSocialMedia() {
+  return socialMedia
+    .filter((item) => item.isVisible)
+    .map((item) => `🔗 ${capitalize(item.name)}: ${item.href}`)
+    .join("\n");
 }

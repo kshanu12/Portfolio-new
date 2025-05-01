@@ -1,7 +1,8 @@
-'use client';
+"use client";
 import { useState, useEffect, useRef } from "react";
 import styles from "./styles.module.css";
 import { icons } from "../Icons";
+import ReactMarkdown from "react-markdown";
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
@@ -82,10 +83,10 @@ export default function ChatWidget() {
                 style={{ height: "1.2rem" }}
               />
               <div className={styles.messageText}>
-                Hi there! 👋 I&apos;m Shanu&apos;s virtual assistant. Feel free to
-                ask me about his work experience, education, projects, skills,
-                or anything else related to his professional background. How can
-                I help you today?
+                Hi there! 👋 I&apos;m Shanu&apos;s virtual assistant. Feel free
+                to ask me about his work experience, education, projects,
+                skills, or anything else related to his professional background.
+                How can I help you today?
                 {/* Hi! I'm Shanu's virtual assistant. How can I
                 help you learn more about his professional background today? */}
               </div>
@@ -104,7 +105,9 @@ export default function ChatWidget() {
                     style={{ height: "1.2rem" }}
                   />
                 )}
-                <div className={styles.messageText}>{msg.text}</div>
+                <div className={styles.messageText}>
+                  <ReactMarkdown>{msg.text}</ReactMarkdown>
+                </div>
                 {msg.sender === "user" && (
                   <div className={styles.userIcon}>{icons["userProfile"]}</div>
                 )}
