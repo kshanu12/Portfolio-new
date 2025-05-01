@@ -82,7 +82,7 @@ export default function ChatWidget() {
                 style={{ height: "1.2rem" }}
               />
               <div className={styles.messageText}>
-                Hi there! 👋 I'm Shanu's virtual assistant. Feel free to ask me
+                Hi there! I'm Shanu's virtual assistant. Feel free to ask me
                 about his work experience, education, projects, skills, or
                 anything else related to his professional background. How can I
                 help you today?
