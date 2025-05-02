@@ -1,5 +1,6 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { Cloud, renderSimpleIcon, fetchSimpleIcons } from 'react-icon-cloud';
+import styles from '../style.module.css'
 
 const useIcons = (slugs) => {
     const [icons, setIcons] = useState()
@@ -14,8 +15,6 @@ const useIcons = (slugs) => {
             }
         }))
     }
-
-    return <a>Loading</a>
 }
 
 const slugs = [
@@ -52,30 +51,22 @@ const slugs = [
 function DynamicIconCloud() {
     const icons = useIcons(slugs);
     return (
-        <div
-            style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                height: 'calc(100vh - 25rem)',
-                position: 'relative',
-            }}
-        >
-                <Cloud
-                    options={{
-                        clickToFront: 500,
-                        depth: 1,
-                        initial: [0.03, -0.03],
-                        wheelZoom: false,
-                        dragControl: true,
-                        decel: 0.95,
-                        outlineColour: 'transparent',
-                        reverse: true,
-                        speed: 0.5,
-                    }}
-                >
-                    {icons}
-                </Cloud>
+        <div className={styles.skillCloud}>
+            <Cloud
+                options={{
+                    clickToFront: 500,
+                    depth: 1,
+                    initial: [0.03, -0.03],
+                    wheelZoom: false,
+                    dragControl: true,
+                    decel: 0.95,
+                    outlineColour: 'transparent',
+                    reverse: true,
+                    speed: 0.5,
+                }}
+            >
+                {icons}
+            </Cloud>
         </div>
     );
 }

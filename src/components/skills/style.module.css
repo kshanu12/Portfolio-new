@@ -1,11 +1,11 @@
-.skillSection{
+.skillSection {
     border-radius: 20px;
     padding: 1.5rem 2rem;
     background: radial-gradient(ellipse at top left, #1b1b1b9f, transparent 70%);
 }
 
 .tree {
-    margin: 1em 0 0 2rem;
+    margin: 1em 0 0 8rem;
     list-style-type: none;
     padding: 0 0 0 1rem;
     width: 40%;
@@ -34,12 +34,12 @@
 .tree li {
     line-height: 1.2;
     position: relative;
-    padding: 0 0 1em 1em;
+    padding: 0 0 1rem 0;
     list-style-type: none;
 }
 
 .tree ul li {
-    padding: 1em 0 0 3em;
+    padding: 1em 0 0 8em;
 }
 
 .tree>li:last-child {
@@ -68,7 +68,6 @@ label.tree_label:hover {
     color: #afafaf;
     font-weight: 600;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-    text-shadow: 1px 1px 4px #fff;
     background: linear-gradient(90deg, #333, #222, #222, #222, #333);
 }
 
@@ -83,9 +82,9 @@ label.tree_label:before {
     position: relative;
     z-index: 1;
     float: left;
-    margin: 0 0 0 -6em;
-    width: 1em;
-    height: 1em;
+    margin: 0 0 0 -11.5rem;
+    width: 1rem;
+    height: 1rem;
     border-radius: 1em;
     content: '+';
     text-align: center;
@@ -107,7 +106,7 @@ label.tree_label:before {
     position: absolute;
     top: 0;
     bottom: 0;
-    left: -.5em;
+    left: -15px;
     display: block;
     width: 0;
     border-left: 1px solid #333;
@@ -122,10 +121,10 @@ label.tree_label:before {
 .tree_label:after {
     position: absolute;
     top: 0.5rem;
-    left: -57px;
+    left: -9rem;
     display: block;
     height: 0.5em;
-    width: 3rem;
+    width: 8rem;
     border-bottom: 2px solid #333;
     border-left: 2px solid #333;
     border-radius: 0 0 0 .3em;
@@ -145,6 +144,7 @@ label.tree_label:after {
     border-bottom: 0;
     border-left: 0;
     bottom: 0;
+    left: -9rem;
     top: 1rem;
     height: 20px;
     animation: connectorTransform 0.4s ease;
@@ -175,7 +175,7 @@ label.tree_label:after {
         transform: scaleX(0);
     }
 
-    50%{
+    50% {
         transform: scaleX(0);
     }
 
@@ -198,5 +198,58 @@ label.tree_label:after {
     100% {
         transform: translateY(0);
         opacity: 1;
+    }
+}
+
+.skillCloud {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 25rem);
+    position: relative;
+    width: 80%;
+    height: 100%
+}
+
+@media (max-width:1300px) {
+    .skillSection {
+        padding: 1.5rem 0 1.5rem 2rem;
+    }
+
+    .tree {
+        margin: 1em 0 0 2rem;
+        width: 100%;
+        border: 1px solid red;
+    }
+
+    .tree li {
+        padding: 0 0 1rem 1rem;
+    }
+
+    .tree ul li {
+        padding: 1em 0 0 3em;
+    }
+
+    label.tree_label:before {
+        margin: 0 0 0 -6rem;
+    }
+
+    .tree li:before {
+        left: -.5em;
+    }
+
+    .tree_label:after {
+        left: -57px;
+        width: 3rem;
+    }
+
+    :checked~label.tree_label:after {
+        left: -57px;
+    }
+}
+
+@media (max-width:768px) {
+    .tree {
+        width: 100%;
     }
 }
