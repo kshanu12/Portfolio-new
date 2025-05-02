@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Cloud, renderSimpleIcon, fetchSimpleIcons } from 'react-icon-cloud';
 import styles from '../style.module.css'
 
 const useIcons = (slugs) => {
     const [icons, setIcons] = useState()
-    React.useEffect(() => { fetchSimpleIcons({ slugs }).then(setIcons) }, [])
+    useEffect(() => { fetchSimpleIcons({ slugs }).then(setIcons) }, [])
 
     if (icons) {
         return Object.values(icons.simpleIcons).map((icon) => renderSimpleIcon({

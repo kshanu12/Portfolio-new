@@ -146,7 +146,7 @@ label.tree_label:after {
     bottom: 0;
     left: -9rem;
     top: 1rem;
-    height: 20px;
+    height: 40px;
     animation: connectorTransform 0.4s ease;
 }
 
@@ -207,7 +207,7 @@ label.tree_label:after {
     align-items: center;
     height: calc(100vh - 25rem);
     position: relative;
-    width: 80%;
+    width: 70%;
     height: 100%
 }
 
@@ -219,7 +219,6 @@ label.tree_label:after {
     .tree {
         margin: 1em 0 0 2rem;
         width: 100%;
-        border: 1px solid red;
     }
 
     .tree li {

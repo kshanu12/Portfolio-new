@@ -2,10 +2,12 @@ export const skills = [
   {
     id: "1",
     label: "Skills",
+    isOpen:true,
     children: [
       {
         id: "1-1",
         label: "Technical",
+        isOpen:true,
         children: [
           {
             id: "1-1-1",
@@ -69,6 +71,7 @@ export const skills = [
       {
         id: "1-2",
         label: "Non-Technical / Hobbies",
+        isOpen: true,
         children: [
           { id: "1-2-1", label: "Sketching" },
           { id: "1-2-2", label: "Badminton" },
