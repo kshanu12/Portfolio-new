@@ -3,13 +3,18 @@ import { useState, useEffect, useRef } from "react";
 import styles from "./styles.module.css";
 import { icons } from "../Icons";
 import ReactMarkdown from "react-markdown";
+import Typed from "typed.js";
 
 export default function ChatWidget() {
+  const typedRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [isListening, setIsListening] = useState(false);
   const recognitionRef = useRef(null);
+  const [showSmallestTail, setShowSmallestTail] = useState(false);
+  const [showMiddleTail, setShowMiddleTail] = useState(false);
+  const [showFullCloud, setShowFullCloud] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -67,13 +72,49 @@ export default function ChatWidget() {
     setMessages((prev) => [...prev, botMessage]);
   };
 
+  useEffect(() => {
+    const showSequence = () => {
+      setShowSmallestTail(true);
+      setTimeout(() => setShowMiddleTail(true), 250);
+      setTimeout(() => {
+        setShowFullCloud(true);
+
+        if (typedRef.current) {
+          typedRef.current.innerHTML = "";
+          new Typed(typedRef.current, {
+            strings: ["May I help you!"],
+            typeSpeed: 50,
+            showCursor: false,
+          });
+        }
+      }, 500);
+
+      setTimeout(() => {
+        setShowSmallestTail(false);
+        setShowMiddleTail(false);
+        setShowFullCloud(false);
+      }, 7000);
+    };
+
+    showSequence();
+
+    const interval = setInterval(showSequence, 10000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className={styles.chatContainer}>
       {isOpen && (
         <div className={styles.chatWindow}>
-          <div className={styles.header} onClick={() => setIsOpen(!isOpen)}>
+          <div className={styles.header}>
             <img src="bot-head.png" className={styles.botName} />
-            <div className={styles.closeIcon}>{icons["close"]}</div>
+            <div
+              className={styles.closeIcon}
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {icons["close"]}
+            </div>
           </div>
           <div className={styles.messages}>
             <div className={`${styles.message} ${styles.bot}`}>
@@ -130,9 +171,47 @@ export default function ChatWidget() {
         </div>
       )}
       {!isOpen && (
-        <button className={styles.bubble} onClick={() => setIsOpen(!isOpen)}>
-          <img src="/chat-bot.gif" alt="chat-bot" />
-        </button>
+        <>
+          <div
+            className={`${styles.thinkingCloud} ${
+              showFullCloud ? styles.showBounce : ""
+            }`}
+          >
+            <div
+              className={`${styles.smallestCloudTail} ${
+                showSmallestTail ? styles.show : ""
+              }`}
+            ></div>
+            <div
+              className={`${styles.middleCloudTail} ${
+                showMiddleTail ? styles.show : ""
+              }`}
+            ></div>
+            <div
+              className={`${styles.thinkingCloudShadow} ${
+                showFullCloud ? styles.show : ""
+              }`}
+            ></div>
+            <div
+              className={`${styles.thinkingCloudText} ${
+                showFullCloud ? styles.show : ""
+              }`}
+            >
+              <span ref={typedRef}></span>
+            </div>
+          </div>
+          <button
+            className={styles.bubble}
+            onClick={() => {
+              setIsOpen(!isOpen);
+              setShowFullCloud(false);
+              setShowMiddleTail(false);
+              setShowSmallestTail(false);
+            }}
+          >
+            <img src="/chat-bot.gif" alt="chat-bot" />
+          </button>
+        </>
       )}
     </div>
   );
