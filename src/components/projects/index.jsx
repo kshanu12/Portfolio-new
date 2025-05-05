@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './style.module.css';
 import Link from "next/link";
-import { icons } from '../Icons';
+import { icons } from '../Items/Icons';
 import { projects } from '@/constants/projectDetails';
 
 const InfiniteCircularGallery = ({ items }) => {

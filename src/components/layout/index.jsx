@@ -1,6 +1,6 @@
 // components/Layout.tsx
-import ChatWidget from "../chatBot";
-import Header from "../header";
+import ChatWidget from "../Items/chatBot";
+import Header from "../Items/header";
 
 export default function Layout({ children }) {
     return (

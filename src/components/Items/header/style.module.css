@@ -41,7 +41,7 @@
 
 .active {
     font-weight: bold;
-    color:#fff
+    color: #fff
 }
 
 .active::after {
@@ -76,7 +76,7 @@
 
 .hamburgerNav {
     display: none;
-    z-index: 999;
+    z-index: 1;
 }
 
 .hamburgerIcon {
@@ -117,7 +117,9 @@
     overflow: hidden;
     transition: all 0.3s ease-in-out;
     display: flex;
-    flex-direction: column;align-items: center;border-radius: 8px;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8px;
 }
 
 .hamburgerLinksOpen {
@@ -147,6 +149,7 @@
     .header {
         padding: 1rem 2rem;
     }
+
     .desktopNav {
         gap: 1.5rem;
     }
@@ -160,8 +163,8 @@
     .hamburgerNav {
         display: block;
     }
-    
-    .logo{
+
+    .logo {
         font-size: 2rem;
     }
 

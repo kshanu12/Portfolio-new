@@ -2,7 +2,7 @@ import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeli
 import 'react-vertical-timeline-component/style.min.css';
 import { expDetails } from '../../constants/expDetails';
 import styles from './style.module.css';
-import { icons } from '../Icons';
+import { icons } from '../Items/Icons';
 import useWindowWidth from '@/hooks/useWindowWidth';
 
 function ExperienceSection() {
