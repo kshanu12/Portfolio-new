@@ -62,10 +62,19 @@ export default function ChatWidget() {
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
 
+    // Get the last 5 messages as context
+    const contextMessages = messages.slice(-5).map((msg) => ({
+      role: msg.sender === "user" ? "user" : "assistant",
+      text: msg.text,
+    }));
+
     const res = await fetch("/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: input }),
+      body: JSON.stringify({
+        message: input,
+        context: contextMessages,
+      }),
     });
     const data = await res.json();
     const botMessage = { sender: "bot", text: data.reply };
@@ -128,7 +137,6 @@ export default function ChatWidget() {
                 Hi there! 👋 I&apos;m Shanu&apos;s virtual assistant. Feel free
                 to ask me about his work experience, education, projects,
                 skills, or anything else related to his professional background.
-                How can I help you today?
                 {/* Hi! I'm Shanu's virtual assistant. How can I
                 help you learn more about his professional background today? */}
               </div>
@@ -164,7 +172,7 @@ export default function ChatWidget() {
               onKeyDown={(e) => e.key === "Enter" && sendMessage()}
               placeholder="Enter your message..."
             />
-            <button onClick={toggleListening} style={{ marginLeft: "0rem" }}>
+            <button onClick={toggleListening}>
               {isListening ? icons["enabledMic"] : icons["disabledMic"]}
             </button>
             <button onClick={sendMessage}>{icons["send"]}</button>
