@@ -1,7 +1,5 @@
-/* components/InfiniteCircularGallery.module.css */
 .container {
     --n: 18;
-    /* Will be overridden by inline style */
     --dir: 0;
     position: fixed;
     width: 100%;
@@ -22,12 +20,6 @@
     content: '';
 }
 
-@media (max-aspect-ratio: 2/3) {
-    .container {
-        --dir: 1;
-    }
-}
-
 .header {
     display: grid;
     place-content: center;
@@ -46,6 +38,7 @@
     overflow: hidden;
     perspective: 50em;
     display: grid;
+    height: 100vh;
 }
 
 .assembly {
@@ -90,13 +83,15 @@
     gap: 1rem;
 }
 
-.itemHeader h2{
+.itemHeader h2 {
     font-size: 2rem !important;
+    z-index: 1;
 }
 
-.itemHeader p{
+.itemHeader p {
     font-size: 1rem;
     text-align: center;
+    z-index: 1;
 }
 
 .article:hover,
@@ -125,6 +120,13 @@
     transition: .35s ease-out;
     transition-property: rotate, --ang;
 }
+
+.itemHeader::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    pointer-events: none; }
 
 .itemHeader::after,
 .figure::after {
@@ -159,45 +161,8 @@
     grid-area: 1/1;
 }
 
-.figcaption {
-    align-self: end;
-    padding: .5em;
-    background: rgba(255, 255, 255, 0.2);
-    color: #040404;
-    font-size: max(.75rem, .75em);
-    text-align: right;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(5px) brightness(1.5);
-    grid-area: 1/1;
-}
-
-.figcaption a {
-    color: #370617;
-}
-
-.aside {
-    position: fixed;
-    bottom: 0;
-    padding: .5em;
-    z-index: 5;
-}
-
-.boxInfoScrollani {
-    margin: .5em;
-    border-left: solid 5px #dc3055;
-    padding: .75em;
-    box-shadow: 2px 2px 5px hsla(0, 0%, 0%, .35);
-    background: #851d40;
-    color: #fff;
-    font: 1em/1.25 var(--font-sans, sans-serif);
-}
-
-.footer {
-    z-index: 5;
-}
-
 .icon {
-    margin:1rem 0 0 0;
+    margin: 1rem 0 0 0;
     pointer-events: auto !important;
     position: relative;
     z-index: 10;
@@ -208,4 +173,23 @@
 
 .icon:hover {
     transform: scale(1.2);
+}
+
+@media (max-aspect-ratio: 2/3) {
+    .container {
+        --dir: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .assembly {
+        --w: clamp(8rem, min(80vh, 80vw), 20em);
+    }
+
+    .scene {
+        width: 100vw;
+        margin-left: -2rem;
+        height: 75vh;
+        margin-top: 5rem;
+    }
 }
