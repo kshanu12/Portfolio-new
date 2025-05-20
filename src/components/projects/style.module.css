@@ -126,7 +126,8 @@
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.6);
-    pointer-events: none; }
+    pointer-events: none;
+}
 
 .itemHeader::after,
 .figure::after {
@@ -191,5 +192,16 @@
         margin-left: -2rem;
         height: 75vh;
         margin-top: 5rem;
+    }
+
+    .itemHeader h2 {
+        font-size: 1.25rem !important;
+        z-index: 1;
+    }
+
+    .itemHeader p {
+        font-size: 0.75rem;
+        text-align: center;
+        z-index: 1;
     }
 }
