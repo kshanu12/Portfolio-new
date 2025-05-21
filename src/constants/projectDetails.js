@@ -26,7 +26,7 @@ export const projects = [
     name: "Tic-Tac-Toe",
     description:
       "Developed a Tic Tac Toe game in C with both single-player (vs. computer) and multiplayer modes. Implemented game logic, win detection, and move history tracking with a modular code structure.",
-    imageSrc: "/dribbling-blocks.png",
+    imageSrc: "/tic-tac-toe.png",
     githubUrl: "https://github.com/kshanu12/Tic-Tac-Toe",
   },
   {
@@ -40,33 +40,22 @@ export const projects = [
     name: "HireWatch",
     description:
       "HireWatch is a proctoring tool for hiring tests with real-time eye tracking, multiple person and object detection using TensorFlow.js, and a browser lockdown feature. It uses Node.js, WebRTC, and Socket.io for secure real-time video streaming and backend communication.",
-    imageSrc: "/dribbling-blocks.png",
-    githubUrl: "https://github.com/kshanu12/Dribbling-block",
-    liveUrl: "https://kshanu12.github.io/Dribbling-block/",
+    imageSrc: "/hirewatch.png",
+    githubUrl: "https://github.com/kshanu12/HireWatch",
   },
   {
-    name: "Dribbling Blocks",
+    name: "Food Management System",
     description:
-      "This is a Dribbling Blocks game inspired by the offline dinosaur game. You control a small block that jumps and dodges increasingly faster obstacles to survive as long as possible.",
-    imageSrc: "/dribbling-blocks.png",
-    githubUrl: "https://github.com/kshanu12/Dribbling-block",
-    liveUrl: "https://kshanu12.github.io/Dribbling-block/",
+      "Food Management System is a web application built to manage food inventory, track donations, and streamline distribution processes. It supports user roles, CRUD operations, and helps organizations efficiently monitor and allocate food resources.",
+    imageSrc: "/food-management-system.png",
+    githubUrl: "https://github.com/kshanu12/Food-Management",
   },
   {
-    name: "Dribbling Blocks",
+    name: "Code Guardian",
     description:
-      "This is a Dribbling Blocks game inspired by the offline dinosaur game. You control a small block that jumps and dodges increasingly faster obstacles to survive as long as possible.",
-    imageSrc: "/dribbling-blocks.png",
-    githubUrl: "https://github.com/kshanu12/Dribbling-block",
-    liveUrl: "https://kshanu12.github.io/Dribbling-block/",
-  },
-  {
-    name: "Dribbling Blocks",
-    description:
-      "This is a Dribbling Blocks game inspired by the offline dinosaur game. You control a small block that jumps and dodges increasingly faster obstacles to survive as long as possible.",
-    imageSrc: "/dribbling-blocks.png",
-    githubUrl: "https://github.com/kshanu12/Dribbling-block",
-    liveUrl: "https://kshanu12.github.io/Dribbling-block/",
+      "An AI-powered code reviewer and suggester using OpenAI, Next.js, and Python. Supports both manual code input and file uploads for real-time bug detection, syntax suggestions, and optimization tips. Designed as a personal coding companion for enhanced development efficiency.",
+    imageSrc: "/code-guardian.png",
+    githubUrl: "https://github.com/kshanu12/CodeGuardian",
   },
   {
     name: "Dribbling Blocks",
