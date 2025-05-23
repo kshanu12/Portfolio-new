@@ -47,10 +47,10 @@ export default function ChatWidget() {
   const toggleListening = () => {
     if (recognitionRef.current) {
       if (isListening) {
-        recognitionRef.current.stop();
+        recognitionRef?.current?.stop();
         setIsListening(false);
       } else {
-        recognitionRef.current.start();
+        recognitionRef?.current?.start();
         setIsListening(true);
       }
     }
@@ -134,11 +134,10 @@ export default function ChatWidget() {
                 style={{ height: "1.2rem" }}
               />
               <div className={styles.messageText}>
-                Hi there! 👋 I&apos;m Shanu&apos;s virtual assistant. Feel free
-                to ask me about his work experience, education, projects,
-                skills, or anything else related to his professional background.
-                {/* Hi! I'm Shanu's virtual assistant. How can I
-                help you learn more about his professional background today? */}
+                Hey there! 👋 I&apos;m Shanu&apos;s virtual assistant, so
+                excited to have you here exploring his portfolio! How can I help
+                you navigate through his amazing skills and projects today? Just
+                let me know what you&apos;re curious about!
               </div>
             </div>
             {messages.map((msg, idx) => (
