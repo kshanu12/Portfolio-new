@@ -36,7 +36,9 @@ function Header() {
 
     return (
         <header className={styles.header}>
-            <h1 data-aos="fade-down" data-aos-duration="500" className={styles.logo}>KS</h1>
+            <Link href="/">
+                <img data-aos="fade-down" data-aos-duration="500" className={styles.logo} src='logo.png' alt='logo' />
+            </Link>
 
             {/* Desktop Navigation */}
             <nav className={styles.desktopNav}>
