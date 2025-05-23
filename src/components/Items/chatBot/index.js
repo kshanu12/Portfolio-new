@@ -108,7 +108,7 @@ export default function ChatWidget() {
     // to show the cloud when the window loads
     // showSequence();
 
-    const interval = setInterval(showSequence, 180000);
+    const interval = setInterval(showSequence, 120000);
 
     return () => clearInterval(interval);
   }, []);

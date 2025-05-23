@@ -194,6 +194,10 @@
         margin-top: 5rem;
     }
 
+    .article {
+        --r: 0.85;
+    }
+
     .itemHeader h2 {
         font-size: 1.25rem !important;
         z-index: 1;

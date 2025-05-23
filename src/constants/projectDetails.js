@@ -54,31 +54,29 @@ export const projects = [
     name: "Code Guardian",
     description:
       "An AI-powered code reviewer and suggester using OpenAI, Next.js, and Python. Supports both manual code input and file uploads for real-time bug detection, syntax suggestions, and optimization tips. Designed as a personal coding companion for enhanced development efficiency.",
-    imageSrc: "/code-guardian.png",
+    imageSrc: "/code-guardian.jpg",
     githubUrl: "https://github.com/kshanu12/CodeGuardian",
   },
   {
-    name: "Dribbling Blocks",
+    name: "Share Space",
     description:
-      "This is a Dribbling Blocks game inspired by the offline dinosaur game. You control a small block that jumps and dodges increasingly faster obstacles to survive as long as possible.",
-    imageSrc: "/dribbling-blocks.png",
-    githubUrl: "https://github.com/kshanu12/Dribbling-block",
-    liveUrl: "https://kshanu12.github.io/Dribbling-block/",
+      "Share Space is a Twitter-inspired social platform built with Next.js, MongoDB, and NextAuth. It features real-time post sharing, user authentication, and state management using Zustand for a seamless user experience.",
+    imageSrc: "/share-space.png",
+    githubUrl: "https://github.com/kshanu12/ShareSpace",
   },
   {
-    name: "Dribbling Blocks",
+    name: "Car Wash Management System",
     description:
-      "This is a Dribbling Blocks game inspired by the offline dinosaur game. You control a small block that jumps and dodges increasingly faster obstacles to survive as long as possible.",
-    imageSrc: "/dribbling-blocks.png",
-    githubUrl: "https://github.com/kshanu12/Dribbling-block",
-    liveUrl: "https://kshanu12.github.io/Dribbling-block/",
+      "A web application for managing car wash services, including booking appointments, tracking service history, and managing customer information. Built with Node.js, Express, PostgreSQL and EJS.",
+    imageSrc: "/car-wash.png",
+    githubUrl: "https://github.com/kshanu12/Car-Wash",
   },
-  {
-    name: "Dribbling Blocks",
-    description:
-      "This is a Dribbling Blocks game inspired by the offline dinosaur game. You control a small block that jumps and dodges increasingly faster obstacles to survive as long as possible.",
-    imageSrc: "/dribbling-blocks.png",
-    githubUrl: "https://github.com/kshanu12/Dribbling-block",
-    liveUrl: "https://kshanu12.github.io/Dribbling-block/",
-  },
+  // {
+  //   name: "Dribbling Blocks",
+  //   description:
+  //     "This is a Dribbling Blocks game inspired by the offline dinosaur game. You control a small block that jumps and dodges increasingly faster obstacles to survive as long as possible.",
+  //   imageSrc: "/dribbling-blocks.png",
+  //   githubUrl: "https://github.com/kshanu12/Dribbling-block",
+  //   liveUrl: "https://kshanu12.github.io/Dribbling-block/",
+  // },
 ];
