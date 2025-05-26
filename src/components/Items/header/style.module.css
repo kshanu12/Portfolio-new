@@ -15,7 +15,6 @@
 .logo {
     margin: 0;
     height: 3rem;
-    font-weight: 300;
 }
 
 .desktopNav {
@@ -165,7 +164,7 @@
     }
 
     .logo {
-        font-size: 2rem;
+        height: 2rem;
     }
 
     .activeMobile {
