@@ -6,7 +6,7 @@
     height: 100vh;
     height: 100dvh;
     color: #dedede;
-    font: clamp(.625em, 3vmin, 1.5em)/1.25 var(--font-sans, sans-serif);
+    font: clamp(.625em, 3vmin, 1.5em)/1.25 var(--font-sans, 'Averia Libre');
     display: grid;
     grid-template-rows: max-content 1fr max-content;
 }
