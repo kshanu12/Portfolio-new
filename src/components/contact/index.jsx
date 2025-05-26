@@ -107,6 +107,11 @@ function ContactSection() {
                             </Link>)
                     })}
                 </div>
+                <div className={styles.downloadBtn}>
+                    <Link href='/KUMAR_SHANU.pdf' className={styles.downloadText} download>
+                        Download CV
+                    </Link>
+                </div>
             </div>
             {
                 showToast &&
