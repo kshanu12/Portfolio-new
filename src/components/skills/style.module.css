@@ -2,6 +2,12 @@
     border-radius: 20px;
     padding: 1.5rem 2rem;
     background: radial-gradient(ellipse at top left, #1b1b1b9f, transparent 70%);
+    height: 90vh;
+    overflow-y: auto;
+}
+
+.skillSection::-webkit-scrollbar {
+    display: none;
 }
 
 .tree {
@@ -248,6 +254,11 @@ label.tree_label:after {
 }
 
 @media (max-width:768px) {
+    .skillSection {
+        height: 95vh;
+        width: 120%;
+    }
+
     .tree {
         width: 100%;
     }

@@ -3,47 +3,22 @@ import Link from "next/link";
 import styles from "../style.module.css";
 import { icons } from "@/components/Items/Icons";
 
-function InfiniteCircularGallery({ items }) {
-    const [mounted, setMounted] = useState(false);
+function InfiniteCircularGallery({ items, scrollController }) {
     const sectionRef = useRef(null);
-    const scrollValueRef = useRef(-1);
-    const autoScrollingRef = useRef(true);
-    const requestRef = useRef();
-    const previousTimeRef = useRef();
+    const updateIntervalRef = useRef();
 
     useEffect(() => {
-        if (!mounted) {
-            setMounted(true);
-            return;
-        }
-
-        document.documentElement.style.height = `${items.length * 100}%`;
-
-        const handleScroll = () => {
-            const scrollHeight =
-                document.documentElement.scrollHeight - window.innerHeight;
-            const scrollTop = window.scrollY;
-            const kVal = (scrollTop / scrollHeight) * 2 - 1;
-            document.body.style.setProperty("--k", kVal);
-            scrollValueRef.current = kVal;
-
-            if (Math.abs(kVal) > 0.95) {
-                const newPosition = 0.5 * (kVal - Math.sign(kVal) + 1) * scrollHeight;
-                requestAnimationFrame(() => {
-                    window.scrollTo(0, newPosition);
-                });
-            }
-
-            updateCardVisibility();
-        };
+        if (!items || items.length === 0) return;
 
         const updateCardVisibility = () => {
             const articles = sectionRef?.current?.querySelectorAll(
                 `.${styles.article}`
             );
-            const kVal = scrollValueRef.current;
 
-            articles.forEach((article, i) => {
+            // Get current k value from CSS custom property
+            const kVal = parseFloat(getComputedStyle(document.body).getPropertyValue('--k')) || 0;
+
+            articles?.forEach((article, i) => {
                 const j = i / items.length;
                 const difLin = j - kVal;
                 const absLin = Math.abs(difLin);
@@ -64,134 +39,38 @@ function InfiniteCircularGallery({ items }) {
             });
         };
 
-        // Initialize the gallery
-        const initGallery = () => {
-            window.scrollTo(0, 0);
-            setTimeout(() => {
-                const scrollHeight =
-                    document.documentElement.scrollHeight - window.innerHeight;
-                window.scrollTo(0, scrollHeight * 0.5);
-                scrollValueRef.current = 0;
-                document.body.style.setProperty("--k", 0);
-                updateCardVisibility();
-
-                // Start animation loop
-                previousTimeRef.current = performance.now();
-                requestRef.current = requestAnimationFrame(animateScroll);
-            }, 100);
+        // Update card visibility continuously
+        const startVisibilityUpdates = () => {
+            updateCardVisibility();
+            updateIntervalRef.current = requestAnimationFrame(startVisibilityUpdates);
         };
 
-        // Animation function using requestAnimationFrame for smoother scrolling
-        const animateScroll = (time) => {
-            if (previousTimeRef.current !== undefined) {
-                const deltaTime = time - previousTimeRef.current;
-
-                // Only update if auto-scrolling is enabled
-                if (autoScrollingRef.current) {
-                    const scrollHeight =
-                        document.documentElement.scrollHeight - window.innerHeight;
-                    const scrollSpeed = 0.00005; // Adjust for desired speed
-                    const currentK = scrollValueRef.current;
-                    const newK = currentK + scrollSpeed * deltaTime;
-
-                    // Calculate new scroll position
-                    const newScrollTop = ((newK + 1) / 2) * scrollHeight;
-                    window.scrollTo(0, newScrollTop);
-                }
-            }
-
-            previousTimeRef.current = time;
-            requestRef.current = requestAnimationFrame(animateScroll);
-        };
-
-        // Manual scrolling/dragging functionality
-        let isDragging = false;
-        let startY = 0;
-        let currentK = 0;
-
-        const handleMouseDown = (e) => {
-            isDragging = true;
-            startY = e.clientY;
-            currentK = scrollValueRef.current;
-            // Disable auto-scrolling during drag
-            autoScrollingRef.current = false;
-        };
-
-        const handleMouseMove = (e) => {
-            if (!isDragging) return;
-            const deltaY = e.clientY - startY;
-            const scrollHeight =
-                document.documentElement.scrollHeight - window.innerHeight;
-            const movement = deltaY / window.innerHeight;
-            const newK = currentK - movement;
-            const newScrollTop = ((newK + 1) / 2) * scrollHeight;
-            window.scrollTo(0, newScrollTop);
-        };
-
-        const handleMouseUp = () => {
-            isDragging = false;
-            // Re-enable auto-scrolling after drag
-            if (!document.querySelector(`.${styles.article}:hover`)) {
-                autoScrollingRef.current = true;
-            }
-        };
-
-        // For touch devices
-        const handleTouchStart = (e) => handleMouseDown(e.touches[0]);
-        const handleTouchMove = (e) => handleMouseMove(e.touches[0]);
-        const handleTouchEnd = () => handleMouseUp();
-
-        // Event listeners
-        window.addEventListener("scroll", handleScroll);
-        sectionRef.current.addEventListener("mousedown", handleMouseDown);
-        window.addEventListener("mousemove", handleMouseMove);
-        window.addEventListener("mouseup", handleMouseUp);
-        sectionRef.current.addEventListener("touchstart", handleTouchStart);
-        window.addEventListener("touchmove", handleTouchMove);
-        window.addEventListener("touchend", handleTouchEnd);
-
-        initGallery();
+        startVisibilityUpdates();
 
         return () => {
-            window.removeEventListener("scroll", handleScroll);
-            sectionRef.current?.removeEventListener("mousedown", handleMouseDown);
-            window.removeEventListener("mousemove", handleMouseMove);
-            window.removeEventListener("mouseup", handleMouseUp);
-            sectionRef.current?.removeEventListener("touchstart", handleTouchStart);
-            window.removeEventListener("touchmove", handleTouchMove);
-            window.removeEventListener("touchend", handleTouchEnd);
-
-            // Cancel animation frame
-            if (requestRef.current) {
-                cancelAnimationFrame(requestRef.current);
+            if (updateIntervalRef.current) {
+                cancelAnimationFrame(updateIntervalRef.current);
             }
         };
-    }, [mounted, items.length]);
+    }, [items]);
 
     // Individual card hover handlers
     const handleCardMouseEnter = () => {
-        autoScrollingRef.current = false;
+        if (scrollController) {
+            scrollController.pauseAutoScroll();
+        }
     };
 
     const handleCardMouseLeave = () => {
-        autoScrollingRef.current = true;
+        if (scrollController) {
+            scrollController.resumeAutoScroll();
+        }
     };
 
     if (!items || items.length === 0) return null;
 
     return (
         <div className={styles.container}>
-            {/* SVG filter for background grain effect */}
-            {/* <svg width="0" height="0" aria-hidden="true">
-                <filter id="grain">
-                    <feTurbulence type="fractalNoise" baseFrequency="7.13"></feTurbulence>
-                    <feColorMatrix type="saturate" values="0"></feColorMatrix>
-                    <feComponentTransfer>
-                        <feFuncA type="linear" slope=".02"></feFuncA>
-                    </feComponentTransfer>
-                    <feBlend in2="SourceGraphic"></feBlend>
-                </filter>
-            </svg> */}
             <main className={styles.scene}>
                 <section
                     className={styles.assembly}
